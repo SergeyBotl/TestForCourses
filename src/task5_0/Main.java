@@ -1,54 +1,38 @@
 package task5_0;
 
-
+import task5_0.dao.Controller;
 import task5_0.dao.EmployeesDAO;
 import task5_0.db.UtilDB;
-import task5_0.entity.CreateData;
+import task5_0.db.CreateData;
 import task5_0.entity.Employees;
+
 import static task5_0.entity.TypeWage.*;
+
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
 
     public static void main(String[] args) {
+        UtilDB.FILE_PATH = new File("src\\task5_0\\employees");
         CreateData d = new CreateData();
-        EmployeesDAO dao = new EmployeesDAO();
-
+        Controller controller = new Controller();
         UtilDB utilDB = new UtilDB();
-        File file=new File("src\\task5_0\\employees");
+        List<Employees> employeesList = new ArrayList<>(controller.getAllEmployees());
 
+
+
+        employeesList = controller.sortList(employeesList);
+        employeesList.forEach(System.out::println);
         System.out.println();
-        //utilDB.createFile(dao.getAllEmployees(),file);
-        utilDB.readFile(file);
-
-
-
-
-
-
-     /*   System.out.println(dao.calculatingAverageSalary(FIXED));
-
-        System.out.printf("%.2f\n \n", dao.calculatingAverageSalary(HOURLY));
-
-        // get all the entries and print
-        dao.getAllEmployees().forEach(System.out::println);
-
+        employeesList = controller.limitFirst(5, employeesList);
+        employeesList.forEach(System.out::println);
         System.out.println();
-        //get all the entries, sort and print
+        employeesList = controller.limitLast(3, employeesList);
+        employeesList.forEach(e -> System.out.println(e.getId()));
 
-        dao.sortList(dao.getAllEmployees()).forEach(System.out::println);
-
-        System.out.println();
-
-        System.out.println("\n" + dao.findById(21));
-
-        //the first five records, print all five
-        dao.limitFirst(5).forEach(System.out::println);
-
-        //the last three records, print id
-        dao.limitLast(3).forEach(e -> System.out.println(e.getId()));
-*/
     }
 
 

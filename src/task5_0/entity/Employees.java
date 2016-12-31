@@ -5,12 +5,20 @@ public class Employees {
     private String name;
     private TypeWage typeWage;
     private int salary;
-    private double salaryAverage;
+
 
     public Employees(String name, int salary, TypeWage typeWage) {
         this.name = name;
         this.salary = salary;
         this.typeWage = typeWage;
+    }
+
+    public Employees(long id, String name, TypeWage typeWage, int salary) {
+        this.id = id;
+        this.name = name;
+        this.typeWage = typeWage;
+        this.salary = salary;
+
     }
 
     public long getId() {
@@ -45,13 +53,6 @@ public class Employees {
         this.salary = salary;
     }
 
-    public double getSalaryAverage() {
-        return salaryAverage;
-    }
-
-    public void setSalaryAverage(double salaryAverage) {
-        this.salaryAverage = salaryAverage;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -62,7 +63,6 @@ public class Employees {
 
         if (id != employees.id) return false;
         if (salary != employees.salary) return false;
-        if (Double.compare(employees.salaryAverage, salaryAverage) != 0) return false;
         if (name != null ? !name.equals(employees.name) : employees.name != null) return false;
         return typeWage == employees.typeWage;
 
@@ -70,26 +70,21 @@ public class Employees {
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = (int) (id ^ (id >>> 32));
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (typeWage != null ? typeWage.hashCode() : 0);
         result = 31 * result + salary;
-        temp = Double.doubleToLongBits(salaryAverage);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
     @Override
     public String toString() {
-        return
-               id +
-                " " + name   +
+        return id +
+                " " + name +
                 " " + typeWage +
                 " " + salary +
-                " "+
-                String.format("%.2f",salaryAverage)
-                 ;
+                " " +
+                String.format("%.2f", (typeWage.equals(TypeWage.FIXED) ? getSalary() : (getSalary() * 20.8 * 8)))
+                ;
     }
 }

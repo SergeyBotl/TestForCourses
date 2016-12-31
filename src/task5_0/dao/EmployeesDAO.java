@@ -1,78 +1,67 @@
 package task5_0.dao;
 
+import task5_0.db.UtilDB;
 import task5_0.entity.Employees;
 import task5_0.entity.TypeWage;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.TimerTask;
-import java.util.stream.Collectors;
-
-import static task5_0.entity.TypeWage.*;
+import java.util.*;
 
 public class EmployeesDAO {
-    private static List<Employees> employeesList = new ArrayList<>();
+    private static EmployeesDAO employeesDAO;
 
+    public static EmployeesDAO getEmployeesDAO() {
+        if (employeesDAO == null) {
+            employeesDAO = new EmployeesDAO();
+        }
+        return employeesDAO;
+    }
+
+    private List<Employees> list;
+    private UtilDB utilDB = new UtilDB();
 
     public boolean save(Employees employees) {
-        if (employees.getTypeWage().equals(FIXED)) {
-            employees.setSalaryAverage(employees.getSalary());
-        } else {
-            employees.setSalaryAverage(employees.getSalary() * 8 * 20.8);
+        list = getAllOfFile();
+        employees.setId(list.size() + 1);
+        list.add(employees);
+        return utilDB.writeFile(list);
+    }
+
+    public List<Employees> getAllOfFile() {
+        int index = 0;
+        list = new ArrayList<>();
+        String[] e;
+        String line;
+        StringTokenizer st = new StringTokenizer(utilDB.readFile(), "\n");
+        while (st.hasMoreElements()) {
+            line = st.nextToken();
+            e = line.split(" ");
+            index++;
+            String[] sDouble = e[4].split(",");
+            try {
+                list.add(new Employees(Long.valueOf(e[0]), e[1], TypeWage.valueOf(e[2])
+                        , Integer.valueOf(e[3])
+                        ));
+                       // , Double.valueOf(sDouble[0] + "." + sDouble[1])));
+                       // , doubleValueOf(e[4])));
+            } catch (NumberFormatException e1) {
+                System.err.println("wrong line on an : " + index + "\n");
+            } catch (ArrayIndexOutOfBoundsException e2) {
+                System.err.println("wrong format average salary index of: "+index);
+            }
         }
-        employees.setId(getAllEmployees().size() + 1);
-        return employeesList.add(employees);
+        return list;
     }
 
-    public List<Employees> getAllByTypeWage(TimerTask type) {
-        return getAllEmployees()
-                .stream()
-                .filter(e -> e.getTypeWage().equals(type))
-                .collect(Collectors.toList());
-    }
+    double doubleValueOf(String s) {
+        String[] sDouble = s.split(",");
+        double result;
+        try {
+            result = Double.valueOf(sDouble[0] + "." + sDouble[1]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.err.println("wrong format average salary");
+            throw e;
 
-    public double calculatingAverageSalary(TypeWage typeWage) {
-        return employeesList
-                .stream().filter(e -> e.getTypeWage().equals(typeWage))
-                .mapToDouble(Employees::getSalaryAverage)
-                .average()
-                .getAsDouble();
-    }
-
-    public boolean delete(Employees employees) {
-        return employeesList.remove(employees);
-    }
-
-    public Employees update(Employees employees, int index) {
-        return employeesList.set(index, employees);
-    }
-
-    public Employees findById(final long id) {
-        return employeesList
-                .stream()
-                .filter(e -> e.getId() == (id))
-                .findFirst().orElse(null);
-    }
-
-    public List<Employees> getAllEmployees() {
-        return employeesList;
-    }
-
-    public List<Employees> sortList(List<Employees> e) {
-        Comparator<Employees> bySalaryAverage = (o1, o2) -> (int) o1.getSalaryAverage() - (int) o2.getSalaryAverage();
-        Comparator<Employees> byName = (o1, o2) -> o1.getName().compareTo(o2.getName());
-        return e.stream()
-                .sorted(bySalaryAverage.thenComparing(byName))
-                .collect(Collectors.toList());
-    }
-
-    public List<Employees> limitFirst(int first) {
-       return getAllEmployees().stream().limit(first).collect(Collectors.toList());
-    }
-
-    public List<Employees> limitLast(int last) {
-        long l=getAllEmployees().size()-last;
-        return getAllEmployees().stream().skip(l).collect(Collectors.toList());
+        }
+        return result;
     }
 }
