@@ -10,8 +10,7 @@ public class Main {
             triangle = new int[massive.length + 1];
             triangle[triangle.length - 1] = 0;
             for (int k = 0; k < massive.length; k++) {
-                int last = massive.length - 1;
-                triangle[k] = massive[k] + massive[last - k];
+                triangle[k] = massive[k] + massive[massive.length - 1-k ];
             }
 
             massive = new int[triangle.length];
@@ -26,7 +25,7 @@ public class Main {
                 System.out.print(i + " ");
             }
         }
-        System.out.println();
+
     }
 
 }
