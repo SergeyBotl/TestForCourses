@@ -20,14 +20,9 @@ public class Controller {
                 .collect(Collectors.toList());
     }
 
-    public double averageSalary(Employees employees) {
-        double average;
-        if (employees.getTypeWage().equals(FIXED)) {
-            average = employees.getSalary();
-        } else {
-            average = employees.getSalary() * 8 * 20.8;
-        }
-        return average;
+    public double averageSalary(Employees e) {
+        return (e.getTypeWage().equals(FIXED)) ?
+                e.getSalary() : e.getSalary() * 8 * 20.8;
     }
 
     public List<Employees> getAllEmployees() {

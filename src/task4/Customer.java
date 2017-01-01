@@ -14,7 +14,8 @@ public class Customer {
         this.name = name;
     }
 
-    public Customer(String name, int phoneNumber) {
+    public Customer(long userId, String name, int phoneNumber) {
+        this.userId = userId;
         this.name = name;
         this.phoneNumber = phoneNumber;
     }
@@ -37,6 +38,10 @@ public class Customer {
 
     public int getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override

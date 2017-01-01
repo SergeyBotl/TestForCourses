@@ -14,7 +14,8 @@ public class Rental {
         this.days = days;
     }
 
-    public Rental( int kind, int days, double basePrice) {
+    public Rental(long rentalId, int kind, int days, double basePrice) {
+        this.rentalId = rentalId;
         this.kind = kind;
         this.days = days;
         this.basePrice = basePrice;
@@ -53,7 +54,8 @@ public class Rental {
         return basePrice;
     }
 
-    //because it works with the data of the class
+
+    //по идее этот метод нужно перенести в другой класс, например клас DAO
     public double amountFor(Rental rental) {
         double result;
 

@@ -19,17 +19,18 @@ public class Main {
         UtilDB.FILE_PATH = new File("src\\task5_0\\employees");
         CreateData d = new CreateData();
         Controller controller = new Controller();
-        UtilDB utilDB = new UtilDB();
-        List<Employees> employeesList = new ArrayList<>(controller.getAllEmployees());
 
+        List<Employees> employeesList = new ArrayList<>(controller.getAllEmployees());
 
 
         employeesList = controller.sortList(employeesList);
         employeesList.forEach(System.out::println);
         System.out.println();
+
         employeesList = controller.limitFirst(5, employeesList);
         employeesList.forEach(System.out::println);
         System.out.println();
+
         employeesList = controller.limitLast(3, employeesList);
         employeesList.forEach(e -> System.out.println(e.getId()));
 

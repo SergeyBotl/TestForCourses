@@ -36,32 +36,15 @@ public class EmployeesDAO {
             line = st.nextToken();
             e = line.split(" ");
             index++;
-            String[] sDouble = e[4].split(",");
             try {
                 list.add(new Employees(Long.valueOf(e[0]), e[1], TypeWage.valueOf(e[2])
-                        , Integer.valueOf(e[3])
-                        ));
-                       // , Double.valueOf(sDouble[0] + "." + sDouble[1])));
-                       // , doubleValueOf(e[4])));
+                        , Integer.valueOf(e[3])));
             } catch (NumberFormatException e1) {
                 System.err.println("wrong line on an : " + index + "\n");
             } catch (ArrayIndexOutOfBoundsException e2) {
-                System.err.println("wrong format average salary index of: "+index);
+                System.err.println("wrong format average salary index of: " + index);
             }
         }
         return list;
-    }
-
-    double doubleValueOf(String s) {
-        String[] sDouble = s.split(",");
-        double result;
-        try {
-            result = Double.valueOf(sDouble[0] + "." + sDouble[1]);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.err.println("wrong format average salary");
-            throw e;
-
-        }
-        return result;
     }
 }

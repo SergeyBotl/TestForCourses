@@ -1,19 +1,14 @@
 package task5_0.db;
 
-import task5_0.dao.EmployeesDAO;
 import task5_0.entity.Employees;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static task5_0.entity.TypeWage.*;
 
 public class CreateData {
-
+    public static List<Employees>list=new ArrayList<>();
     public CreateData() {
-        List<Employees>list=new ArrayList<>();
 
-        EmployeesDAO dao = new EmployeesDAO();
         list.add(new Employees("Ann", 120, FIXED));
         list.add(new Employees("Becker", 100, FIXED));
         list.add(new Employees("Audley", 105, FIXED));

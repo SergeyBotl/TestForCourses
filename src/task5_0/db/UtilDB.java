@@ -11,9 +11,12 @@ public class UtilDB {
 
     public String readFile() {
         StringBuilder sb = new StringBuilder();
+        if (!FILE_PATH.exists()) {
+            System.out.println("create file");
+            writeFile(CreateData.list);
+        }
         try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
             String line = br.readLine();
-            StringTokenizer st;
             while (line != null) {
                 sb.append(line);
                 sb.append(" ");
@@ -21,7 +24,7 @@ public class UtilDB {
                 sb.append(System.lineSeparator());
             }
         } catch (IOException e) {
-            System.out.println("wrong file");
+            System.out.println("incorrectly read the file");
         }
         return sb.toString();
     }
@@ -29,7 +32,9 @@ public class UtilDB {
 
     public boolean writeFile(List<Employees> employees) {
         StringBuilder sb = new StringBuilder();
+        long id = 0;
         for (Employees e : employees) {
+            if (e.getId() == 0) e.setId(id++);
             sb.append(e.toString());
             sb.append(System.lineSeparator());
         }
@@ -39,8 +44,7 @@ public class UtilDB {
             bw.close();
             return true;
         } catch (IOException e) {
-            System.out.println("cannot write");
-            //e.printStackTrace();
+            System.err.println("cannot write");
             return false;
         }
     }
