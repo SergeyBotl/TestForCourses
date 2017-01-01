@@ -87,4 +87,6 @@ public class Employees {
                 String.format("%.2f", (typeWage.equals(TypeWage.FIXED) ? getSalary() : (getSalary() * 20.8 * 8)))
                 ;
     }
+
+
 }

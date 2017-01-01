@@ -1,10 +1,9 @@
-package tasr1;
+package task1;
 
 public class Main {
     public static void main(String[] args) {
-
+        int row = 5;
         int massive[] = {1, 0};
-        int row = 10;
         int[] triangle = {0, 0};
 
         for (int i = 0; i < row; i++) {

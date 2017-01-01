@@ -35,14 +35,16 @@ public class EmployeesDAO {
         while (st.hasMoreElements()) {
             line = st.nextToken();
             e = line.split(" ");
-            index++;
-            try {
+                        try {
                 list.add(new Employees(Long.valueOf(e[0]), e[1], TypeWage.valueOf(e[2])
                         , Integer.valueOf(e[3])));
-            } catch (NumberFormatException e1) {
-                System.err.println("wrong line on an : " + index + "\n");
-            } catch (ArrayIndexOutOfBoundsException e2) {
-                System.err.println("wrong format average salary index of: " + index);
+                index++;
+            } catch (NumberFormatException ex) {
+                  System.err.println("wrong record on an index: " + index + "\n");
+            } catch (IllegalArgumentException ex) {
+                System.err.println("wrong format type wage index of: " + index);
+            }finally {
+
             }
         }
         return list;
