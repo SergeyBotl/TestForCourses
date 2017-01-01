@@ -7,15 +7,15 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class UtilDB {
-    public static File FILE_PATH;
 
-    public String readFile() {
+
+    public String readFile(File file) {
         StringBuilder sb = new StringBuilder();
-        if (!FILE_PATH.exists()) {
+        if (!file.exists()) {
             System.out.println("create file");
-            writeFile(CreateData.list);
+            writeFile(file,CreateData.list);
         }
-        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line = br.readLine();
             while (line != null) {
                 sb.append(line);
@@ -30,7 +30,7 @@ public class UtilDB {
     }
 
 
-    public boolean writeFile(List<Employees> employees) {
+    public boolean writeFile(File file,List<Employees> employees) {
         StringBuilder sb = new StringBuilder();
         long id = 0;
         for (Employees e : employees) {
@@ -39,7 +39,7 @@ public class UtilDB {
             sb.append(System.lineSeparator());
         }
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             bw.write(sb.toString());
             bw.close();
             return true;

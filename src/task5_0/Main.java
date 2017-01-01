@@ -1,6 +1,7 @@
 package task5_0;
 
 import task5_0.dao.Controller;
+import task5_0.dao.EmployeesDAO;
 import task5_0.db.UtilDB;
 import task5_0.db.CreateData;
 import task5_0.entity.Employees;
@@ -13,7 +14,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        UtilDB.FILE_PATH = new File("src\\task5_0\\employees");
+        EmployeesDAO.FILE_PATH = new File("src\\task5_0\\employees");
         CreateData d = new CreateData();
         Controller controller = new Controller();
 
