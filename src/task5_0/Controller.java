@@ -1,5 +1,6 @@
-package task5_0.dao;
+package task5_0;
 
+import task5_0.dao.EmployeesDAO;
 import task5_0.entity.Employees;
 
 import java.util.Comparator;
