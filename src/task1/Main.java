@@ -2,7 +2,7 @@ package task1;
 
 public class Main {
     public static void main(String[] args) {
-        int row = 5;
+        int row = 4;
         int massive[] = {1, 0};
         int[] triangle = {0, 0};
 
@@ -18,6 +18,7 @@ public class Main {
     }
 
     private static void print(int[] ints) {
+
         for (int i : ints) {
             if (i != 0) {
                 System.out.print(i + " ");
