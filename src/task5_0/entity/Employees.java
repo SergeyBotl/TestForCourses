@@ -1,5 +1,8 @@
 package task5_0.entity;
 
+/**
+ * object model
+ */
 public class Employees {
     private long id;
     private String name;

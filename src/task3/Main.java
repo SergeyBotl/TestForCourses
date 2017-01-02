@@ -1,6 +1,9 @@
 package task3;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.lang.System.out;
 
 public class Main {
 
@@ -43,20 +46,14 @@ public class Main {
             }
         }
         // System.out.println(list);
-        System.out.println(intList.toString());
+        out.println(intList.toString());
         maxMin(intList);
     }
 
     static void maxMin(List<Integer> integers) {
-        Collections.sort(integers, new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o1 - o2;
-            }
-        });
-
-        //System.out.println(integers);
-        System.out.println("Max: " + integers.get(integers.size() - 1) + "\nMin: " + integers.get(0));
+        int max = integers.stream().max((o1, o2) -> o1 - o2).get();
+        int min = integers.stream().min((o1, o2) -> o1 - o2).get();
+        out.println("Max: " + max + "\nMin: " + min);
     }
 
     static boolean isNumber(String s) {

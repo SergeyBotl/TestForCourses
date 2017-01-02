@@ -12,7 +12,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        EmployeesDAO.FILE_PATH = new File("src\\task5_0\\employees");
+        EmployeesDAO.FILE_PATH = new File("src\\task5_0\\db\\employees.txt");
         CreateData d = new CreateData();
         Controller controller = new Controller();
 
@@ -27,8 +27,8 @@ public class Main {
         employeesList.forEach(System.out::println);
         System.out.println();
 
-        employeesList = controller.limitLast(3, employeesList);
-        employeesList.forEach(e -> System.out.println(e.getId()));
+        controller.limitLast(3, employeesList).forEach(System.out::println);
+        // employeesList.forEach(e -> System.out.println(e.getId()));
 
     }
 
