@@ -34,7 +34,7 @@ public class EmployeesDAO implements DAO<Employees> {
      * and transferred all records to UtilDB class to save a file
      *
      * @param employees new record about a employee
-     * @return boolean,for check
+     * @return boolean, for check
      */
     public boolean save(Employees employees) {
         list = getAllOfFile();
@@ -45,12 +45,13 @@ public class EmployeesDAO implements DAO<Employees> {
 
     /**
      * Translate string to list
-     * and returns a collection of objects
-     * In  method of the check if the incorrect information in the file
-     *
-     *  e = st.nextToken().split(" ") put in an array of type string
-     *  then taken out of the array and converted to the required type
-     *  and make a new entry in the list
+     * and returns a collection of objects.
+     * try-catch this code for handling the incorrect format of
+     * incoming file.
+     * <p>
+     * e = st.nextToken().split(" ") put in an array of type string
+     * then taken out of the array and converted to the required type
+     * and make a new entry in the list
      */
     public List<Employees> getAllOfFile() {
         int index = 0;
