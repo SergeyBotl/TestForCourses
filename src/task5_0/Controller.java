@@ -37,8 +37,8 @@ public class Controller {
      * employees with fixed payment – “average monthly salary= fixed monthly
      * payment”.
      *
-     * @param e (Employees) a copy of the employee
-     * @return variable type double average monthly salary
+     * @param e (Employees) record of one employee
+     * @return  type double average monthly salary
      */
     public double averageSalary(Employees e) {
         return (e.getTypeWage().equals(FIXED)) ?
