@@ -31,11 +31,12 @@ public class EmployeesDAO implements DAO<Employees> {
     /**
      * Get all the information from the file to list
      * add the id and save new record to collection
-     * and transferred all records to UtilDB class to save a file
+     * and transferred all records to UtilDB class to save in file
      *
      * @param employees new record about a employee
      * @return boolean, for check
      */
+    @Override
     public boolean save(Employees employees) {
         list = getAllOfFile();
         employees.setId(list.size() + 1);
@@ -53,6 +54,7 @@ public class EmployeesDAO implements DAO<Employees> {
      * then taken out of the array and converted to the required type
      * and make a new entry in the list
      */
+   @Override
     public List<Employees> getAllOfFile() {
         int index = 0;
         list = new ArrayList<>();
