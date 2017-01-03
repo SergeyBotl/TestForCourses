@@ -30,8 +30,8 @@ public class EmployeesDAO implements DAO<Employees> {
 
     /**
      * Get all the information from the file to list
-     * add the id and save to collection
-     * and transferred to UtilDB class to save a file
+     * add the id and save new record to collection
+     * and transferred all records to UtilDB class to save a file
      *
      * @param employees new record about a employee
      * @return boolean,for check
