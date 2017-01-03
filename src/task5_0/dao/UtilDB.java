@@ -8,21 +8,14 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class UtilDB {
+
     /**
-     * if (!file.exists()) If this file does not
-     * exist then create a new.The data are taken
-     * from the class CreateData
-     *
      * @param file the path to the file
      * @return type String
      */
 
     public String readFile(File file) {
         StringBuilder sb = new StringBuilder();
-        if (!file.exists()) {
-            System.out.println("create file");
-            writeFile(file, CreateData.list);
-        }
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line = br.readLine();
             while (line != null) {
@@ -54,6 +47,7 @@ public class UtilDB {
             return false;
         }
     }
+
 
 
 }

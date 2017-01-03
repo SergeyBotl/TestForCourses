@@ -1,5 +1,7 @@
 package task5_0.dao;
 
+import task5_0.Main;
+import task5_0.db.CreateData;
 import task5_0.entity.Employees;
 import task5_0.entity.TypeWage;
 
@@ -11,9 +13,10 @@ import java.util.*;
  * in this case the file employees.txt
  */
 public class EmployeesDAO implements DAO<Employees> {
-    public static File FILE_PATH;
-    private List<Employees> list;
+    public static File FILE_PATH= Main.FILE_PATH;
     private UtilDB utilDB = new UtilDB();
+    private  CreateData createData = CreateData.getCreateData();
+    private List<Employees> list;
 
     /**
      * Singleton. Receive one copy of the class
@@ -73,4 +76,14 @@ public class EmployeesDAO implements DAO<Employees> {
         }
         return list;
     }
+
+    /**
+     * The data are taken
+     * from the class CreateData
+     * @param file the path to the file
+     */
+    public void createFile(File file) {
+        utilDB.writeFile(file, createData.getDataEmployees());
+        System.out.println("create file");
+  }
 }

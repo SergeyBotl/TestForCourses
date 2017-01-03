@@ -1,8 +1,10 @@
 package task5_0;
 
 import task5_0.dao.EmployeesDAO;
+import task5_0.db.CreateData;
 import task5_0.entity.Employees;
 
+import java.io.File;
 import java.util.Comparator;
 import java.util.List;
 import java.util.TimerTask;
@@ -102,5 +104,17 @@ public class Controller {
                 .map(employees -> employees.getId())
                 .skip((l < 1) ? 0 : l)
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * if (!file.exists()) If this file does not
+     * exist then create a new.
+     * @param file
+     */
+    public void checkFileExist(File file) {
+        if (!file.exists()){
+           dao.createFile(file);
+            }
+
     }
 }

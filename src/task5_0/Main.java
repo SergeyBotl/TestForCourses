@@ -9,15 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-
+    public static File FILE_PATH = new File("src\\task5_0\\db\\employees.txt");
 
     public static void main(String[] args) {
-        EmployeesDAO.FILE_PATH = new File("src\\task5_0\\db\\employees.txt");
-        CreateData d = new CreateData();
+        List<Employees> employeesList;
         Controller controller = new Controller();
 
-        List<Employees> employeesList = new ArrayList<>(controller.getAllEmployees());
+        //controller.checkFileExist(FILE_PATH);
 
+
+        employeesList = controller.getAllEmployees();
 
         employeesList = controller.sortList(employeesList);
         employeesList.forEach(System.out::println);
