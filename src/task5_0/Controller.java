@@ -46,7 +46,7 @@ public class Controller {
     }
 
     /**
-     * Here I get a collection of all employees
+     * Here get a collection from EmployeesDAO class all employees
      *
      * @return collection of all employees
      */
