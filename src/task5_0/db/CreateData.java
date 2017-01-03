@@ -1,12 +1,15 @@
 package task5_0.db;
 
 import task5_0.entity.Employees;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static task5_0.entity.TypeWage.*;
 
 public class CreateData {
-    public static List<Employees>list=new ArrayList<>();
+    public static List<Employees> list = new ArrayList<>();
+
     public CreateData() {
 
         list.add(new Employees("Ann", 120, FIXED));
@@ -31,6 +34,11 @@ public class CreateData {
         list.add(new Employees("Ellington", 2, HOURLY));
         list.add(new Employees("Dyson", 1, HOURLY));
         list.add(new Employees("Duncan", 5, HOURLY));
+        long id = 0;
+        for (Employees e : list) {
+            id++;
+            e.setId(id);
+        }
 
     }
 }

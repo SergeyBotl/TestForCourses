@@ -13,7 +13,7 @@ public class UtilDB {
         StringBuilder sb = new StringBuilder();
         if (!file.exists()) {
             System.out.println("create file");
-            writeFile(file,CreateData.list);
+            writeFile(file, CreateData.list);
         }
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line = br.readLine();
@@ -30,14 +30,11 @@ public class UtilDB {
     }
 
 
-    public boolean writeFile(File file,List<Employees> employees) {
+    public boolean writeFile(File file, List<Employees> employees) {
         StringBuilder sb = new StringBuilder();
-        long id = 0;
         for (Employees e : employees) {
-            if (e.getId() == 0) e.setId(id);
             sb.append(e.toString());
             sb.append(System.lineSeparator());
-            id++;
         }
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
