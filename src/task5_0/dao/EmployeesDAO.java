@@ -13,7 +13,7 @@ import java.util.*;
  * in this case the file employees.txt
  */
 public class EmployeesDAO implements DAO<Employees> {
-    public static File FILE_PATH= Main.FILE_PATH;
+    public static File filePath= Main.FILE_PATH_EMPLOYEES;
     private UtilDB utilDB = new UtilDB();
     private  CreateData createData = CreateData.getCreateData();
     private List<Employees> list;
@@ -43,7 +43,7 @@ public class EmployeesDAO implements DAO<Employees> {
         list = getAllOfFile();
         employees.setId(list.size() + 1);
         list.add(employees);
-        return utilDB.writeFile(FILE_PATH, list);
+        return utilDB.writeFile(filePath, list);
     }
 
     /**
@@ -61,7 +61,7 @@ public class EmployeesDAO implements DAO<Employees> {
         int index = 0;
         list = new ArrayList<>();
         String[] e;
-        StringTokenizer st = new StringTokenizer(utilDB.readFile(FILE_PATH), "\n");
+        StringTokenizer st = new StringTokenizer(utilDB.readFile(filePath), "\n");
         while (st.hasMoreElements()) {
             e = st.nextToken().split(" ");
             try {
@@ -80,10 +80,10 @@ public class EmployeesDAO implements DAO<Employees> {
     /**
      * The data are taken
      * from the class CreateData
-     * @param file the path to the file
+     *
      */
-    public void createFile(File file) {
-        utilDB.writeFile(file, createData.getDataEmployees());
+    public void createFile() {
+        utilDB.writeFile(filePath, createData.getDataEmployees());
         System.out.println("create file");
   }
 }

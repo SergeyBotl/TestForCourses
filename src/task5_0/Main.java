@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static File FILE_PATH = new File("src\\task5_0\\db\\employees.txt");
+    public static File FILE_PATH_EMPLOYEES = new File("src\\task5_0\\db\\employees.txt");
 
     public static void main(String[] args) {
         List<Employees> employeesList;
         Controller controller = new Controller();
 
-        //controller.checkFileExist(FILE_PATH);
+        controller.checkFileExist(FILE_PATH_EMPLOYEES);
 
 
         employeesList = controller.getAllEmployees();

@@ -113,7 +113,7 @@ public class Controller {
      */
     public void checkFileExist(File file) {
         if (!file.exists()){
-           dao.createFile(file);
+           dao.createFile();
             }
 
     }
