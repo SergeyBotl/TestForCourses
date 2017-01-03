@@ -11,7 +11,7 @@ import java.util.*;
  * EmployeesDAO class works with the database,
  * in this case the file employees.txt
  */
-public class EmployeesDAO {
+public class EmployeesDAO implements DAO<Employees> {
     public static File FILE_PATH;
     private List<Employees> list;
     private UtilDB utilDB = new UtilDB();
