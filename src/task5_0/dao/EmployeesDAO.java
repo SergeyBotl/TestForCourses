@@ -1,6 +1,5 @@
 package task5_0.dao;
 
-import task5_0.db.UtilDB;
 import task5_0.entity.Employees;
 import task5_0.entity.TypeWage;
 

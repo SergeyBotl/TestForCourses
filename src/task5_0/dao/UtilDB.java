@@ -1,5 +1,6 @@
-package task5_0.db;
+package task5_0.dao;
 
+import task5_0.db.CreateData;
 import task5_0.entity.Employees;
 
 import java.io.*;
@@ -7,7 +8,14 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class UtilDB {
-
+    /**
+     * if (!file.exists()) If this file does not
+     * exist then create a new.The data are taken
+     * from the class CreateData
+     *
+     * @param file the path to the file
+     * @return type String
+     */
 
     public String readFile(File file) {
         StringBuilder sb = new StringBuilder();
