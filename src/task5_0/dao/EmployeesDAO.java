@@ -29,11 +29,12 @@ public class EmployeesDAO {
     }
 
     /**
-     * add the id is stored in the collection
+     * Get all the information from the file to list
+     * add the id and save to collection
      * and transferred to UtilDB class to save a file
      *
-     * @param employees
-     * @return boolean,
+     * @param employees new record about a employee
+     * @return boolean,for check
      */
     public boolean save(Employees employees) {
         list = getAllOfFile();
@@ -43,8 +44,13 @@ public class EmployeesDAO {
     }
 
     /**
-     * Translate string in the list
+     * Translate string to list
      * and returns a collection of objects
+     * In  method of the check if the incorrect information in the file
+     *
+     *  e = st.nextToken().split(" ") put in an array of type string
+     *  then taken out of the array and converted to the required type
+     *  and make a new entry in the list
      */
     public List<Employees> getAllOfFile() {
         int index = 0;
@@ -60,7 +66,7 @@ public class EmployeesDAO {
             } catch (NumberFormatException ex) {
                 System.err.println("wrong record on an index: " + index + "\n");
             } catch (IllegalArgumentException ex) {
-                System.err.println("wrong format type wage index of: " + index);
+                System.err.println("wrong format type wage index: " + index);
             }
         }
         return list;

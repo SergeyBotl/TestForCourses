@@ -1,7 +1,6 @@
 package task3;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.lang.System.out;
 

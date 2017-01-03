@@ -54,7 +54,6 @@ public class Rental {
         return basePrice;
     }
 
-
     //по идее этот метод нужно перенести в другой класс, например клас DAO
     public double amountFor(Rental rental) {
         double result;
