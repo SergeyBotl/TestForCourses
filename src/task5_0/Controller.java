@@ -101,7 +101,7 @@ public class Controller {
     public List<Long> limitLast(int last, List<Employees> list) {
         long l = list.size() - last;
         return list.stream()
-                .map(employees -> employees.getId())
+                .map(Employees::getId)
                 .skip((l < 1) ? 0 : l)
                 .collect(Collectors.toList());
     }
