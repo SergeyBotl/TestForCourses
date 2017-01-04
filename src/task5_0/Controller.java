@@ -20,9 +20,11 @@ public class Controller {
     private EmployeesDAO dao = EmployeesDAO.getEmployeesDAO();
 
     /**
-     * @param type (wage type)
-     * @return Returns a collection of the filtered for wage type
+     * Filter by type salary.
      * used here java8.
+     *
+     * @param type parameter type  salary from enum TypeWage
+     * @return Returns  collection the employees
      */
     public List<Employees> getAllByTypeWage(TimerTask type) {
         return getAllEmployees()
@@ -32,14 +34,14 @@ public class Controller {
     }
 
     /**
-     * The calculation of the average monthly salary,
-     * depending on the type of salary
+     * The calculation of the average wage,
+     * depending on the type of wages.
      * For employees with hourly
      * wage use next formula: “average monthly salary= 20.8*8* hourly rate”, for
      * employees with fixed payment – “average monthly salary= fixed monthly
      * payment”.
      *
-     * @param e (Employees) record of one employee
+     * @param e (Employees) one object the employee
      * @return type double average monthly salary
      */
     public double averageSalary(Employees e) {
@@ -48,9 +50,10 @@ public class Controller {
     }
 
     /**
-     * Here get a collection all employees from EmployeesDAO class 
+     * Here get all employees  in the list
+     * from EmployeesDAO class
      *
-     * @return collection of all employees
+     * @return collection  type the "Employees"
      */
     public List<Employees> getAllEmployees() {
         return dao.getAllOfFile();
