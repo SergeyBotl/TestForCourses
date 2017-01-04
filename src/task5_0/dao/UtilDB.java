@@ -13,7 +13,7 @@ public class UtilDB {
 
     /**
      * @param file the path to the file
-     * @return  string separated by spaces and the rows "\ n" 
+     * @return  string separated by spaces and the rows "\ n"
      */
 
     public String readFile(File file) {
@@ -33,21 +33,23 @@ public class UtilDB {
     }
 
 
-    public boolean writeFile(File file, List<Employees> employees) {
+    public boolean writeFile(File file, List<Employees> employees)  {
         StringBuilder sb = new StringBuilder();
         for (Employees e : employees) {
             sb.append(e.toString());
-            sb.append(System.lineSeparator());
+            sb.append(System.lineSeparator()); //get the string for records
         }
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-            bw.write(sb.toString());
-            bw.close();
+        //i used try-with-resources so not necessary  in the method close()
+        try  (BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
+
+           bw.write(sb.toString());
+           // bw.close();
             return true;
         } catch (IOException e) {
             System.err.println("cannot write");
             return false;
         }
+
     }
 
 

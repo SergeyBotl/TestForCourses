@@ -6,6 +6,7 @@ import task5_0.entity.Employees;
 import task5_0.entity.TypeWage;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -39,7 +40,7 @@ public class EmployeesDAO implements DAO<Employees> {
      * @return boolean, for check
      */
     @Override
-    public boolean save(Employees employees) {
+    public boolean save(Employees employees)  {
         list = getAllOfFile();
         employees.setId(list.size() + 1);
         list.add(employees);
