@@ -40,7 +40,7 @@ public class Controller {
      * payment”.
      *
      * @param e (Employees) record of one employee
-     * @return  type double average monthly salary
+     * @return type double average monthly salary
      */
     public double averageSalary(Employees e) {
         return (e.getTypeWage().equals(FIXED)) ?
@@ -99,22 +99,23 @@ public class Controller {
      * Used java8
      */
     public List<Long> limitLast(int last, List<Employees> list) {
-        long l = list.size() - last;
+        long l = list.size() - last; //The number of skipped lines
         return list.stream()
-                .map(Employees::getId)
                 .skip((l < 1) ? 0 : l)
-                .collect(Collectors.toList());
+                .map(Employees::getId)// get  the ids
+                .collect(Collectors.toList());//return the list in the type long
     }
 
     /**
      * if (!file.exists()) If this file does not
      * exist then create a new.
+     *
      * @param file
      */
     public void checkFileExist(File file) {
-        if (!file.exists()){
-           dao.createFile();
-            }
+        if (!file.exists()) {
+            dao.createFile();
+        }
 
     }
 }

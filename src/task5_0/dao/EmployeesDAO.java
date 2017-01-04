@@ -13,9 +13,9 @@ import java.util.*;
  * in this case the file employees.txt
  */
 public class EmployeesDAO implements DAO<Employees> {
-    public static File filePath= Main.FILE_PATH_EMPLOYEES;
+    public static File filePath = Main.FILE_PATH_EMPLOYEES;
     private UtilDB utilDB = new UtilDB();
-    private  CreateData createData = CreateData.getCreateData();
+    private CreateData createData = CreateData.getCreateData();
     private List<Employees> list;
 
     /**
@@ -80,10 +80,9 @@ public class EmployeesDAO implements DAO<Employees> {
     /**
      * The data are taken
      * from the class CreateData
-     *
      */
     public void createFile() {
         utilDB.writeFile(filePath, createData.getDataEmployees());
         System.out.println("create file");
-  }
+    }
 }
