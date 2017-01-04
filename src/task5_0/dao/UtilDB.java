@@ -13,7 +13,7 @@ public class UtilDB {
 
     /**
      * @param file the path to the file
-     * @return type String
+     * @return  string separated by spaces and the rows "\ n" 
      */
 
     public String readFile(File file) {
