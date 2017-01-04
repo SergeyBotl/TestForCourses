@@ -48,7 +48,7 @@ public class Controller {
     }
 
     /**
-     * Here get a collection from EmployeesDAO class all employees
+     * Here get a collection all employees from EmployeesDAO class 
      *
      * @return collection of all employees
      */
@@ -68,11 +68,13 @@ public class Controller {
      * filter in the method of sorted()
      */
     public List<Employees> sortList(List<Employees> e) {
+        //Here  prepared the conditions and fields for sorting
         Comparator<Employees> bySalaryAverage = (o1, o2) -> (int) averageSalary(o2) - (int) averageSalary(o1);
         Comparator<Employees> byName = (o1, o2) -> o1.getName().compareTo(o2.getName());
+
         return e.stream()
-                .sorted(bySalaryAverage.thenComparing(byName))
-                .collect(Collectors.toList());
+                .sorted(bySalaryAverage.thenComparing(byName))//Here is sorted
+                .collect(Collectors.toList());//return in the list
     }
 
     /**
