@@ -102,8 +102,8 @@ public class Controller {
         long l = list.size() - last; //The number of skipped lines
         return list.stream()
                 .skip((l < 1) ? 0 : l)
-                .map(Employees::getId)// get  the ids
-                .collect(Collectors.toList());//return the list in the type long
+                .map(Employees::getId)// get the fields  ids
+                .collect(Collectors.toList());//return in the list type the long
     }
 
     /**
