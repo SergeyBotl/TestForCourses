@@ -12,6 +12,7 @@ public class Main {
         String toChar;
         StringBuilder sb = new StringBuilder();
         toChar = "2*12ihi52.414oi4+5oi/kjlj-jkhlk15-5jhjkh+ll10/2kkll5+3";
+
         for (int i = 0; i < toChar.length(); i++) {
             if (isNumber(toChar.charAt(i))) {
                 sb.append(toChar.charAt(i));
@@ -50,9 +51,10 @@ public class Main {
     }
 
     static void maxMin(List<Integer> integers) {
-        int max = integers.stream().max((o1, o2) -> o1 - o2).get();
-        int min = integers.stream().min((o1, o2) -> o1 - o2).get();
-        out.println("Max: " + max + "\nMin: " + min);
+        System.out.println("Max: "
+                        + Collections.max(integers)
+                        + "\nMin: "
+                        + Collections.min(integers));
     }
 
     static boolean isNumber(String s) {
