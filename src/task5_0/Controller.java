@@ -33,7 +33,7 @@ public class Controller {
                 .collect(Collectors.toList());
     }
 
-    /**
+   /* *//**
      * The calculation of the average wage,
      * depending on the type of wages.
      * For employees with hourly
@@ -43,11 +43,11 @@ public class Controller {
      *
      * @param e (Employees) one object the employee
      * @return type double average monthly salary
-     */
+     *//*
     public double averageSalary(Employees e) {
         return (e.getTypeWage().equals(FIXED)) ?
                 e.getSalary() : e.getSalary() * 8 * 20.8;
-    }
+    }*/
 
     /**
      * Here get all employees  in the list
@@ -72,7 +72,7 @@ public class Controller {
      */
     public List<Employees> sortList(List<Employees> e) {
         //Here  prepared the conditions and fields for sorting
-        Comparator<Employees> bySalaryAverage = (o1, o2) -> (int) averageSalary(o2) - (int) averageSalary(o1);
+        Comparator<Employees> bySalaryAverage = (o1, o2) -> (int) o2.getAverageSalary() - (int) o1.getAverageSalary();
         Comparator<Employees> byName = (o1, o2) -> o1.getName().compareTo(o2.getName());
 
         return e.stream()
@@ -112,6 +112,8 @@ public class Controller {
     }
 
     /**
+     * Method for testing only
+     * <p>
      * if (!file.exists()) If this file does not
      * exist then create a new.
      *

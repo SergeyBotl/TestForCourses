@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * object model
  */
-public class Employees implements Serializable{
+public class Employees implements Serializable {
     private long id;
     private String name;
     private TypeWage typeWage;
@@ -55,7 +55,12 @@ public class Employees implements Serializable{
     }
 
     public void setSalary(int salary) {
+
         this.salary = salary;
+    }
+
+    public double getAverageSalary() {
+        return (typeWage.equals(TypeWage.HOURLY)) ? salary * 20.8 * 8 : salary;
     }
 
 
