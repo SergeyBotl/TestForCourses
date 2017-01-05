@@ -94,7 +94,8 @@ public class Employees implements Serializable {
                 " " + typeWage +
                 " " + salary +
                 " " +
-                String.format("%.2f", (typeWage.equals(TypeWage.FIXED) ? getSalary() : (getSalary() * 20.8 * 8)))
+                String.format("%.2f", getAverageSalary())
+                //String.format("%.2f", (typeWage.equals(TypeWage.FIXED) ? getSalary() : (getSalary() * 20.8 * 8)))
                 ;
     }
 
