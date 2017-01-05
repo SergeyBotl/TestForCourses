@@ -11,7 +11,7 @@ public class Main {
         List<Integer> intList;
         String toChar;
         StringBuilder sb = new StringBuilder();
-        toChar = "2*12ihi52.414oi4+5oi/kjlj-jkhlk15-5jhjkh+ll10/2kkll5+3";
+        toChar = "2*12ihi52.414oi4+5oi/kjlj-jkhlk15-5jhjkh+ll10/2kkll5+23";
 
         for (int i = 0; i < toChar.length(); i++) {
             if (isNumber(toChar.charAt(i))) {
@@ -28,12 +28,11 @@ public class Main {
         }
         list = new ArrayList<>(Arrays.asList(sb.toString().split(" ")));
         intList = new ArrayList<>();
-        // System.out.println(list);
+
+        System.out.println(list);
+
         for (int i = 0; i < list.size(); i++) {
-            if (i < list.size() - 2
-                    && isNumber(list.get(i))
-                    && !isNumber(list.get(i + 1))
-                    && isNumber(list.get(i + 2))) {
+            if (!isNumber(list.get(i + 1))) {
                 int first = Integer.valueOf(list.get(i)), last = Integer.valueOf(list.get(i + 2));
                 if (list.get(i + 1).equals("*")) intList.add(first * last);
                 if (list.get(i + 1).equals("/")) intList.add(first / last);
@@ -52,9 +51,9 @@ public class Main {
 
     static void maxMin(List<Integer> integers) {
         System.out.println("Max: "
-                        + Collections.max(integers)
-                        + "\nMin: "
-                        + Collections.min(integers));
+                + Collections.max(integers)
+                + "\nMin: "
+                + Collections.min(integers));
     }
 
     static boolean isNumber(String s) {
