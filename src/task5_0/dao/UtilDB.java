@@ -11,10 +11,7 @@ import java.util.stream.Collectors;
 
 public class UtilDB {
 
-    /**
-     * @param file the path to the file
-     * @return  string separated by spaces and the rows "\ n"
-     */
+
 
     public String readFile(File file) {
         StringBuilder sb = new StringBuilder();

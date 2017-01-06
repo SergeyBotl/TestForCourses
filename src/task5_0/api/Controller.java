@@ -20,11 +20,11 @@ public class Controller {
     private EmployeesDAO dao = EmployeesDAO.getEmployeesDAO();
 
     /**
-     * Filter by type salary.
-     * used here java8.
+     * Filter by salary type .
+     * used java8.
      *
      * @param type parameter type  salary from enum TypeWage
-     * @return Returns  collection the employees
+     * @return Returns  collection of the employees
      */
     public List<Employees> getAllByTypeWage(TimerTask type) {
         return getAllEmployees()
@@ -50,8 +50,8 @@ public class Controller {
     }*/
 
     /**
-     * Here get all employees  in the list
-     * from EmployeesDAO class
+     * Get all employees  in the list
+     * from EmployeesDAO class.
      *
      * @return collection  type the "Employees"
      */
@@ -66,18 +66,17 @@ public class Controller {
      *
      * @param e List<Employees>
      * @return sort a collection of all employees.
-     * Used java8
-     * Since the beginning of creating two filters then
-     * filter in the method of sorted()
+     *
+     *
      */
     public List<Employees> sortList(List<Employees> e) {
-        //Here  prepared the conditions and fields for sorting
+        // Prepared the conditions and fields for sorting
         Comparator<Employees> bySalaryAverage = (o1, o2) -> (int) o2.getAverageSalary() - (int) o1.getAverageSalary();
         Comparator<Employees> byName = (o1, o2) -> o1.getName().compareTo(o2.getName());
 
         return e.stream()
-                .sorted(bySalaryAverage.thenComparing(byName))//Here is sorted
-                .collect(Collectors.toList());//return in the list
+                .sorted(bySalaryAverage.thenComparing(byName))
+                .collect(Collectors.toList());
     }
 
     /**
@@ -85,9 +84,9 @@ public class Controller {
      * of workers from the collection
      *
      * @param first how to get the lines
-     * @param list  list of  take a lines
+     * @param list  list of  take  lines
      * @return found rows
-     * Used java8
+     *
      */
     public List<Employees> limitFirst(int first, List<Employees> list) {
         return list.stream().limit(first).collect(Collectors.toList());
@@ -104,11 +103,11 @@ public class Controller {
      * Used java8
      */
     public List<Long> limitLast(int last, List<Employees> list) {
-        long l = list.size() - last; //The number of skipped lines
+        long l = list.size() - last;
         return list.stream()
                 .skip((l < 1) ? 0 : l)
-                .map(Employees::getId)// get the fields  ids
-                .collect(Collectors.toList());//return in the list type the long
+                .map(Employees::getId)
+                .collect(Collectors.toList());
     }
 
     /**

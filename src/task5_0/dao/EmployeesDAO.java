@@ -9,10 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-/**
- * EmployeesDAO class works with the database,
- * in this case the file employees.txt
- */
+
 public class EmployeesDAO implements DAO<Employees> {
     private static File filePath = Main.FILE_PATH_EMPLOYEES;
     private UtilDB utilDB = new UtilDB();
@@ -31,14 +28,7 @@ public class EmployeesDAO implements DAO<Employees> {
         return employeesDAO;
     }
 
-    /**
-     * Get all the information from the file to list
-     * add the id and save new record to collection
-     * and transferred all records to UtilDB class to save in file
-     *
-     * @param employees new record about a employee
-     * @return boolean, for check
-     */
+
     @Override
     public boolean save(Employees employees)  {
         list = getAllOfFile();
@@ -47,16 +37,7 @@ public class EmployeesDAO implements DAO<Employees> {
         return utilDB.writeFile(filePath, list);
     }
 
-    /**
-     * Translate string to list
-     * and returns a collection of objects.
-     * try-catch this code for handling the incorrect format of
-     * incoming file.
-     * <p>
-     * e = st.nextToken().split(" ") put in an array of type string
-     * then taken out of the array and converted to the required type
-     * and make a new entry in the list
-     */
+
     @Override
     public List<Employees> getAllOfFile() {
         int index = 0;
@@ -78,10 +59,7 @@ public class EmployeesDAO implements DAO<Employees> {
         return list;
     }
 
-    /**
-     * The data are taken
-     * from the class CreateData
-     */
+
     public void createFile() {
         utilDB.writeFile(filePath, createData.getDataEmployees());
         System.out.println("create file");

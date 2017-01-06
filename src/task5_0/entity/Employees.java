@@ -2,9 +2,7 @@ package task5_0.entity;
 
 import java.io.Serializable;
 
-/**
- * object model
- */
+
 public class Employees implements Serializable {
     private long id;
     private String name;
