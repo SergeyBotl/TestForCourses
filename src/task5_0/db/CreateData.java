@@ -10,17 +10,17 @@ import static task5_0.entity.TypeWage.*;
 
 public class CreateData {
     private static List<Employees> list = new ArrayList<>();
-   private static CreateData createData;
+    private static CreateData createData;
 
     public static CreateData getCreateData() {
-        if (createData==null){
-            createData=new CreateData();
-          }
+        if (createData == null) {
+            createData = new CreateData();
+        }
 
         return createData;
     }
 
-    public  CreateData() {
+    private CreateData() {
 
         list.add(new Employees("Ann", 120, FIXED));
         list.add(new Employees("Becker", 100, FIXED));
@@ -47,7 +47,7 @@ public class CreateData {
     }
 
     public List<Employees> getDataEmployees() {
-         long id = 0;
+        long id = 0;
         for (Employees e : list) {
             id++;
             e.setId(id);

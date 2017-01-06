@@ -14,7 +14,7 @@ import java.util.*;
  * in this case the file employees.txt
  */
 public class EmployeesDAO implements DAO<Employees> {
-    public static File filePath = Main.FILE_PATH_EMPLOYEES;
+    private static File filePath = Main.FILE_PATH_EMPLOYEES;
     private UtilDB utilDB = new UtilDB();
     private CreateData createData = CreateData.getCreateData();
     private List<Employees> list;
