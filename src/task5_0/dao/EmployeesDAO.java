@@ -16,9 +16,7 @@ public class EmployeesDAO implements DAO<Employees> {
     private CreateData createData = CreateData.getCreateData();
     private List<Employees> list;
 
-    /**
-     * Singleton. Receive one copy of the class
-     */
+
     private static EmployeesDAO employeesDAO;
 
     public static EmployeesDAO getEmployeesDAO() {

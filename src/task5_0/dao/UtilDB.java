@@ -1,17 +1,9 @@
 package task5_0.dao;
-
-import task5_0.db.CreateData;
 import task5_0.entity.Employees;
-
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
-import java.util.stream.Collectors;
 
 public class UtilDB {
-
-
 
     public String readFile(File file) {
         StringBuilder sb = new StringBuilder();
